@@ -8,6 +8,20 @@ function addNote() {
         note.className = "note";
         note.textContent = inputValue;
 
+        // Add a remove button
+        const removeButton = document.createElement("button");
+        removeButton.textContent = "Remove";
+        removeButton.className = "remove-btn";
+        removeButton.onclick = () => {
+            notes.removeChild(noteContainer);
+        };
+
+        // Create a container for the note and button
+        const noteContainer = document.createElement("div");
+        noteContainer.className = "note-container";
+        noteContainer.appendChild(note);
+        noteContainer.appendChild(removeButton);
+
         if (inputValue.toLowerCase() === "/help") {
             const defaultResponse = document.createElement("div");
             defaultResponse.className = "note default-response";
@@ -15,13 +29,14 @@ function addNote() {
             notes.appendChild(defaultResponse);
         }
 
-        notes.appendChild(note);
+        notes.appendChild(noteContainer);
         noteInput.value = "";
     } else {
         alert("Please enter a note.");
     }
-    function clearNotes() {
-        const notes = document.getElementById("notes");
-        notes.innerHTML = ""; // Clears all notes
-    }
+}
+
+function clearNotes() {
+    const notes = document.getElementById("notes");
+    notes.innerHTML = ""; // Clears all notes
 }
