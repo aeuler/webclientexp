@@ -20,4 +20,8 @@ function addNote() {
     } else {
         alert("Please enter a note.");
     }
+    function clearNotes() {
+        const notes = document.getElementById("notes");
+        notes.innerHTML = ""; // Clears all notes
+    }
 }
